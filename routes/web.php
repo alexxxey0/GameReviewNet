@@ -1,6 +1,5 @@
 <?php
 
-use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('App');
-});
+// Route::get('/', function () {
+//     return Inertia::render('Welcome');
+// });
+
+Route::inertia('/', 'App');
+Route::inertia('/login', 'Login');
+Route::inertia('/register', 'Register');

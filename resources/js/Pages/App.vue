@@ -1,16 +1,37 @@
 <template>
-    <h1>Hello Vue</h1>
+    <Layout>
+        <Welcome />
+    </Layout>
 </template>
 
 <script>
+    import Layout from './Layout.vue'
+    import Welcome from './Welcome.vue'
+
     export default {
-        name: 'App'
+        name: 'App',
+        components: {
+            Layout,
+            Welcome
+        }
     }
 </script>
 
 <style>
-    h1 {
-        color: blue;
-        border: 5px solid green;
+    @import url('https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap');
+
+
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Play', sans-serif;
+    }
+
+    #app {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        background-color: black;
     }
 </style>
