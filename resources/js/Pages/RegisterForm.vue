@@ -1,13 +1,13 @@
 <template>
-    <form action="">
+    <form @submit.prevent="submit">
         <div>
             <label for="username">Username</label>
-            <input type="text" name="username" required>
+            <input type="text" name="username" v-model="form.username" required>
         </div>
 
         <div>
             <label for='password'>Password</label>
-            <input type='password' name='password' id='password' required>
+            <input type='password' name='password' id='password' v-model="form.password" required>
         </div>
 
         <div>
@@ -15,14 +15,41 @@
             <input type='password' name='password_confirmation' id='password_confirmation' required>
         </div>
 
+        <div id="image">
+            <label for="image">Profile picture (optional)</label>
+            <input type="file" name="image" @change="uploadImage">
+        </div>
+
         <button type='submit'>Register</button>
     </form>
 </template>
 
 <script>
-    export default {
-        name: 'RegisterForm'
+import { router } from '@inertiajs/vue3';
+
+export default {
+    name: 'RegisterForm',
+
+    data() {
+        return {
+            form: {
+                username: null,
+                password: null,
+                image: null
+            }
+        }
+    },
+
+    methods: {
+        submit() {
+            router.post('/create_user', this.form);
+        },
+
+        uploadImage(event) {
+            this.form.image = event.target.files[0];
+        }
     }
+}
 </script>
 
 <style scoped>
@@ -65,5 +92,9 @@
     form div {
         display: flex;
         flex-direction: column;
+    }
+
+    form #image {
+        color: white;
     }
 </style>

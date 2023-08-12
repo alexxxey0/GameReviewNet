@@ -6,15 +6,18 @@
 
 <script>
     export default {
-        name: 'Footer'
+        name: 'Footer',
+        props: [
+            'themeColor'
+        ]
     }
 </script>
 
 <style scoped>
     footer {
         background-color: black;
-        color: greenyellow;
-        border-top: 5px solid greenyellow;
+        color: v-bind(themeColor);
+        border-top: 5px solid v-bind(themeColor);
         padding-block: 1em;
         text-align: right;
         margin-top: 5%;
